@@ -23,6 +23,9 @@ def main():
     with open(path, "rb") as f:
         back = f.read()
     assert back == data, "read-back mismatch"
+    text = back.decode("utf-8")
+    assert text == LINE, "decoded text differs from the line"
+    assert text == text.strip(), "line has leading or trailing whitespace"
     print(f"wrote {len(data)} bytes ({len(LINE)} chars) to {path}")
 
 
